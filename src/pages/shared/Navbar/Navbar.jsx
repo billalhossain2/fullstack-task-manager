@@ -44,7 +44,7 @@ const navLinks = [
 const Navbar = () => {
   const [isOpen, setOpen] = useState(false)
   return (
-    <nav>
+    <nav className="z-50">
        {/* Navbar for large and medium device  */}
       <div className="md:flex justify-between md:items-center mt-5 mb-16 hidden">
       <div><img className="w-32" src={logo} alt="" /></div>

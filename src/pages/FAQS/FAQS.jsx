@@ -46,7 +46,7 @@ const FAQS = () => {
 
         <p className="text-gray-700">
           If you have more questions or need assistance, feel free to contact our support team at{' '}
-          <span className="text-primary">#00A4B7</span>.
+          <span className="text-gray-900">billal.webdev@gmail.com</span>.
         </p>
       </div>
     </div>

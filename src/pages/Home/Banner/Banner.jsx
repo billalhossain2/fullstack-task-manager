@@ -18,7 +18,7 @@ const Banner = () => {
         <div>
         <Link to="/login">
         <button className="uppercase bg-[#00A4B7] hover:bg-[#42939c] duration-300 px-5 py-3 rounded-full text-white">
-          Explore More
+          Let's Explore
         </button>
         </Link>
         </div>

@@ -3,7 +3,10 @@ import logo from "../assets/task-logo.png";
 import { MdAddTask } from "react-icons/md";
 import { FaHome } from "react-icons/fa";
 import { IoMdSettings } from "react-icons/io";
+import { useContext } from "react";
+import { AuthContext } from "../providers/AuthProvider";
 const Dashboard = () => {
+  const {user} = useContext(AuthContext)
   return (
     <div className="relative">
       <header className="flex justify-between md:flex-row flex-col-reverse md:gap-0 gap-5 items-center px-3 bg-gray-900 text-white py-3">
@@ -32,10 +35,10 @@ const Dashboard = () => {
         <div className="flex md:flex-row flex-col items-center gap-3">
           <div className="avatar online">
             <div className="w-10 rounded-full">
-              <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+              <img src={user?.photoURL} />
             </div>
           </div>
-          <p>Hello, Siam Ahmed</p>
+          <p>Hello, {user?.displayName}</p>
         </div>
 
       </header>

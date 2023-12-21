@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const AddNewTaskForm = ({ onAddTask, onCancel }) => {
+const AddNewTaskForm = () => {
   const initialTask = {
     title: '',
     description: '',
@@ -17,7 +17,8 @@ const AddNewTaskForm = ({ onAddTask, onCancel }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onAddTask(newTask);
+    console.log(newTask)
+
     // Reset the form after submitting
     setNewTask({ ...initialTask });
   };
@@ -103,7 +104,6 @@ const AddNewTaskForm = ({ onAddTask, onCancel }) => {
           </button>
           <button
             type="button"
-            onClick={onCancel}
             className="text-gray-600 px-4 py-2 rounded-md hover:text-gray-800 focus:outline-none"
           >
             Cancel

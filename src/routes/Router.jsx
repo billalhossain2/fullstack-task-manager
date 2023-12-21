@@ -11,6 +11,7 @@ import UserHome from "../pages/Dashboard/UserHome/UserHome";
 import Settings from "../pages/Dashboard/Settings/Settings";
 import AddNewTaskForm from "../pages/Dashboard/AddNewTaskForm/AddNewTaskForm";
 import EditTaskForm from "../pages/Dashboard/EditTaskForm/EditTaskForm";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -50,7 +51,7 @@ const router = createBrowserRouter([
     children:[
       {
         path:'/dashboard',
-        element:<UserHome></UserHome>
+        element:<PrivateRoute><UserHome></UserHome></PrivateRoute>
       },
       {
         path:'/dashboard/settings',

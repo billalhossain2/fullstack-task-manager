@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
 
-const EditTaskForm = ({ task, onUpdateTask, onCancel }) => {
+const EditTaskForm = () => {
+  const task = {
+    title:'aaaaaa',
+    description:'bbbbbbb',
+    deadline:'2023-12-23',
+    priority:'High'
+  }
   const [updatedTask, setUpdatedTask] = useState({ ...task });
 
   const handleInputChange = (e) => {
@@ -10,7 +16,8 @@ const EditTaskForm = ({ task, onUpdateTask, onCancel }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onUpdateTask(updatedTask);
+    // onUpdateTask(updatedTask);
+    console.log(updatedTask)
   };
 
   return (
@@ -94,7 +101,6 @@ const EditTaskForm = ({ task, onUpdateTask, onCancel }) => {
           </button>
           <button
             type="button"
-            onClick={onCancel}
             className="text-gray-600 px-4 py-2 rounded-md hover:text-gray-800 focus:outline-none"
           >
             Cancel

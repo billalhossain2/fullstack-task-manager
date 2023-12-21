@@ -7,6 +7,10 @@ import HomeLayout from "../Layouts/HomeLayout";
 import Dashboard from "../Layouts/Dashboard";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
+import UserHome from "../pages/Dashboard/UserHome/UserHome";
+import Settings from "../pages/Dashboard/Settings/Settings";
+import AddNewTaskForm from "../pages/Dashboard/AddNewTaskForm/AddNewTaskForm";
+import EditTaskForm from "../pages/Dashboard/EditTaskForm/EditTaskForm";
 
 const router = createBrowserRouter([
   {
@@ -42,7 +46,25 @@ const router = createBrowserRouter([
 
   {
     path:"/dashboard",
-    element:<Dashboard></Dashboard>
+    element:<Dashboard></Dashboard>,
+    children:[
+      {
+        path:'/dashboard',
+        element:<UserHome></UserHome>
+      },
+      {
+        path:'/dashboard/settings',
+        element:<Settings></Settings>
+      },
+      {
+        path:'/dashboard/add-new-task',
+        element:<AddNewTaskForm></AddNewTaskForm>
+      },
+      {
+        path:'/dashboard/edit-task',
+        element:<EditTaskForm></EditTaskForm>
+      },
+    ]
   }
 ]);
 

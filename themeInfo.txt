@@ -1,0 +1,7 @@
+Primary Color:
+#00A4B7
+
+Secondary Color
+#31348C
+
+Section Space:

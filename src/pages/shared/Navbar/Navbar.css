@@ -1,11 +1,11 @@
-ul.animated-border li{
+ul.animated-border li a{
     position: relative;
     padding-bottom: 5px;
     transition: 1s;
     font-weight: 500;
 }
 
-ul.animated-border li::before{
+ul.animated-border li a::before{
     content: "";
     width: 0;
     height: 3px;
@@ -15,10 +15,17 @@ ul.animated-border li::before{
     transition: 0.3s;
 }
 
-ul.animated-border li:hover::before{
+ul.animated-border li a:hover::before{
     width: 100%;
 }
 
-ul.animated-border li a:hover{
-    color:#027b88;
+
+ul.animated-border li a.active::before{
+    content: "";
+    width: 100%;
+    height: 3px;
+    position: absolute;
+    bottom: 0;
+    background: #00A4B7;
+    transition: 0.3s;
 }

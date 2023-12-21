@@ -46,7 +46,7 @@ const Navbar = () => {
   return (
     <nav>
        {/* Navbar for large and medium device  */}
-      <div className="md:flex justify-between md:items-center my-5 hidden">
+      <div className="md:flex justify-between md:items-center mt-5 mb-16 hidden">
       <div><img className="w-32" src={logo} alt="" /></div>
       <ul className="flex items-center gap-10 animated-border">
         {navLinks.map((linkItem) => (

@@ -1,10 +1,10 @@
 import React, { useContext, useState } from 'react';
-import AxiosPublic from '../../../hooks/AxiosPublic';
 import { AuthContext } from '../../../providers/AuthProvider';
 import { toast } from 'react-toastify';
+import useAxiosPublic from '../../../hooks/useAxiosPublic';
 
 const AddNewTaskForm = () => {
-  const axiosPublic = AxiosPublic;
+  const axiosPublic = useAxiosPublic();
   const {user} = useContext(AuthContext);
 
   const initialTask = {

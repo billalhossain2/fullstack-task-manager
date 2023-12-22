@@ -1,6 +1,7 @@
 import TaskCard from "./TaskCard"
 
 const AllTasks = ({allTasks}) => {
+
   return (
     <div className="grid md:grid-cols-3 grid-cols-1 gap-5">
         {

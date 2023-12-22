@@ -1,47 +1,26 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Badge from '../../../components/Badge'
 import AllTasks from './AllTasks/AllTasks'
 import CompletedTasks from './CompletedTasks/CompletedTasks'
 import OngoingTasks from './OngoingTasks/OngoingTasks'
 import { FaRegSquare } from "react-icons/fa";
+import useAxiosPublic from '../../../hooks/useAxiosPublic'
+import { AuthContext } from '../../../providers/AuthProvider'
 
 const UserHome = () => {
-  const allDemoTasks = [
-    {
-      "title": "Develop Website Homepage",
-      "description": "Create a visually appealing homepage for the task management website using React and Tailwind CSS.",
-      "deadline": "2023-02-28",
-      "priority": "High"
-    },
-    {
-      "title": "Prepare Monthly Financial Report",
-      "description": "Compile and analyze financial data to create a comprehensive monthly report for the finance department.",
-      "deadline": "2023-03-15",
-      "priority": "Moderate",
-      "status":"completed"
-    },
-    {
-      "title": "Implement User Authentication",
-      "description": "Integrate user authentication functionality to enhance security and control access to sensitive information.",
-      "deadline": "2023-02-10",
-      "priority": "High"
-    },
-    {
-      "title": "Organize Team Building Event",
-      "description": "Plan and coordinate a team-building event to boost team morale and strengthen collaboration among team members.",
-      "deadline": "2023-04-01",
-      "priority": "Low"
-    },
-    {
-      "title": "Review Marketing Strategy",
-      "description": "Evaluate the current marketing strategy and propose enhancements to increase brand visibility and customer engagement.",
-      "deadline": "2023-03-05",
-      "priority": "Moderate",
-      "status":"completed"
-    }
-  ]
+  const axiosPublic = useAxiosPublic();
+  const {user} = useContext(AuthContext)
 
-  const [allTasks, setAllTasks] = useState(allDemoTasks)
+  const [allTasks, setAllTasks] = useState([]);
+  console.log("From Home=====>", allTasks)
+
+  useEffect(()=>{
+    axiosPublic.get(`/tasks?email=${user?.email}`)
+    .then(res => setAllTasks(res.data))
+    .catch(error => {
+      toast.error(error.message, {autoClose:3000})
+    })
+  }, [axiosPublic])
 
   return (
     <div className='bg-gray-200 min-h-screen px-4 pb-10 pt-5'>

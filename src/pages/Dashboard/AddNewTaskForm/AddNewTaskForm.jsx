@@ -2,10 +2,12 @@ import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../../providers/AuthProvider';
 import { toast } from 'react-toastify';
 import useAxiosPublic from '../../../hooks/useAxiosPublic';
+import { useNavigate } from 'react-router-dom';
 
 const AddNewTaskForm = () => {
   const axiosPublic = useAxiosPublic();
   const {user} = useContext(AuthContext);
+  const navigate = useNavigate()
 
   const initialTask = {
     title: '',
@@ -26,6 +28,7 @@ const AddNewTaskForm = () => {
   try {
     const res = await axiosPublic.post("/tasks", {...newTask, email:user?.email, completed:false});
     toast.success("Successfully added a new task", {autoClose:1000});
+    navigate("/dashboard")
   } catch (error) {
     toast.error(error.message, {autoClose:1000})
   }

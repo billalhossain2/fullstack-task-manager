@@ -62,8 +62,11 @@ const router = createBrowserRouter([
         element:<AddNewTaskForm></AddNewTaskForm>
       },
       {
-        path:'/dashboard/edit-task',
-        element:<EditTaskForm></EditTaskForm>
+        path:'/dashboard/edit-task/:taskId',
+        element:<EditTaskForm></EditTaskForm>,
+        loader:async({params})=>{
+          return fetch(`${import.meta.env.VITE_API_URL}/tasks/${params.taskId}`)
+        }
       },
     ]
   }

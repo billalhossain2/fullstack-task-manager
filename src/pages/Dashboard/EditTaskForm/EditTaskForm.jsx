@@ -1,23 +1,31 @@
 import React, { useState } from 'react';
+import { useLoaderData, useNavigate, useParams} from 'react-router-dom';
+import useAxiosPublic from '../../../hooks/useAxiosPublic';
+import { toast } from 'react-toastify';
 
 const EditTaskForm = () => {
-  const task = {
-    title:'aaaaaa',
-    description:'bbbbbbb',
-    deadline:'2023-12-23',
-    priority:'High'
-  }
-  const [updatedTask, setUpdatedTask] = useState({ ...task });
+  const axiosPublic = useAxiosPublic();
+  const {taskId} = useParams();
+  const navigate = useNavigate()
+
+  const loaderData = useLoaderData();
+  console.log("Loader data", loaderData)
+
+  const [updatedTask, setUpdatedTask] = useState({ ...loaderData });
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setUpdatedTask({ ...updatedTask, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     // onUpdateTask(updatedTask);
     console.log(updatedTask)
+    const {title, description, priority, completed, email, deadline} = updatedTask;
+    const res = await axiosPublic.put(`/tasks/${taskId}`, {title, description, priority, completed, email, deadline});
+    toast.success("successfully updated", {autoClose:1000})
+    navigate("/dashboard")
   };
 
   return (

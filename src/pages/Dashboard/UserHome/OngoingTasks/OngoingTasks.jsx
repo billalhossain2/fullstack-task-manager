@@ -3,9 +3,10 @@ import OngoingTaskCard from './OngoingTaskCard'
 
 const OngoingTasks = ({allTasks}) => {
   return (
-    <div className="grid md:grid-cols-3 grid-cols-1 gap-5">
+    <div>
+       <h1 className='text-2xl font-medium mb-3'>Ongoing Tasks</h1>
         {
-            allTasks?.filter(item=>item.status !== "completed").map((taskItem, index) => <OngoingTaskCard key={index} taskItem={taskItem}></OngoingTaskCard>)
+            allTasks?.filter(item=>!item.completed).map((taskItem, index) => <OngoingTaskCard key={index} taskItem={taskItem}></OngoingTaskCard>)
         }
     </div>
   )

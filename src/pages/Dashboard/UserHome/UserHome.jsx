@@ -6,21 +6,11 @@ import OngoingTasks from './OngoingTasks/OngoingTasks'
 import { FaRegSquare } from "react-icons/fa";
 import useAxiosPublic from '../../../hooks/useAxiosPublic'
 import { AuthContext } from '../../../providers/AuthProvider'
+import useLoadAllTasksByEmail from '../../../hooks/useLoadAllTasksByEmail'
 
 const UserHome = () => {
-  const axiosPublic = useAxiosPublic();
-  const {user} = useContext(AuthContext)
-
-  const [allTasks, setAllTasks] = useState([]);
-  console.log("From Home=====>", allTasks)
-
-  useEffect(()=>{
-    axiosPublic.get(`/tasks?email=${user?.email}`)
-    .then(res => setAllTasks(res.data))
-    .catch(error => {
-      toast.error(error.message, {autoClose:3000})
-    })
-  }, [axiosPublic])
+  const {isLoading, error, data:allTasks, refetch} = useLoadAllTasksByEmail();
+  console.log("All Tasks===> ", allTasks)
 
   return (
     <div className='bg-gray-200 min-h-screen px-4 pb-10 pt-5'>

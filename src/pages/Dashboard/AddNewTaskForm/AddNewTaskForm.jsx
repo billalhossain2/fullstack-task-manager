@@ -1,6 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import AxiosPublic from '../../../hooks/AxiosPublic';
+import { AuthContext } from '../../../providers/AuthProvider';
+import { toast } from 'react-toastify';
 
 const AddNewTaskForm = () => {
+  const axiosPublic = AxiosPublic;
+  const {user} = useContext(AuthContext);
+
   const initialTask = {
     title: '',
     description: '',
@@ -15,10 +21,14 @@ const AddNewTaskForm = () => {
     setNewTask({ ...newTask, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    console.log(newTask)
-
+  try {
+    const res = await axiosPublic.post("/tasks", {...newTask, email:user?.email, completed:false});
+    toast.success("Successfully added a new task", {autoClose:1000});
+  } catch (error) {
+    toast.error(error.message, {autoClose:1000})
+  }
     // Reset the form after submitting
     setNewTask({ ...initialTask });
   };

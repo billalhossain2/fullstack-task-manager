@@ -10,7 +10,7 @@ import useAxiosPublic from "../../../../hooks/useAxiosPublic";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 
-import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
+import { Draggable } from "react-beautiful-dnd";
 
 const TaskCard = ({ taskItem }) => {
   const axiosPublic = useAxiosPublic();

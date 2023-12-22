@@ -25,7 +25,7 @@ const Login = () => {
     try {
       const res = await signInWithEmailPwd(email, password)
       toast.success("Login success!", {autoClose:2000})
-      navigate("/")
+      navigate("/dashboard")
     } catch (error) {
       toast.error(error.message, {autoClose:2000})
     }
@@ -35,6 +35,7 @@ const Login = () => {
   const hanldeLoginWithGoogle = async()=>{
     const res = await loginWithGoogle()
     toast.success("Successfully logged in", {autoClose:2000})
+    navigate("/dashboard")
   }
 
   return (

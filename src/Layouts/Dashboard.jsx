@@ -5,6 +5,11 @@ import { FaHome } from "react-icons/fa";
 import { IoMdSettings } from "react-icons/io";
 import { useContext } from "react";
 import { AuthContext } from "../providers/AuthProvider";
+
+import { ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 const Dashboard = () => {
   const {user} = useContext(AuthContext)
   return (
@@ -95,6 +100,7 @@ const Dashboard = () => {
           </ul>
         </div>
       </div>
+      <ToastContainer></ToastContainer>
     </div>
   );
 };
